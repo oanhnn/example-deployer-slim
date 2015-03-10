@@ -24,9 +24,19 @@ or using [`composer`](http://getcomposer.org)
 $ composer create-project oanhnn/deployer-example <target-directory>
 ```
 
-Documentation
+Usage
 -------------
-Comming soon on http://oanhnn.com.
+Custom `stage/dev.php` for your system.    
+First deployment:
+```shell
+$ bin/dep configure dev -vvv
+$ bin/dep deploy dev -vvv
+```
+
+Second deployment and after:
+```shell
+$ bin/dep deploy dev -vvv
+```
 
 Contributing
 ------------
