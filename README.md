@@ -1,6 +1,6 @@
 Introduction
 ------------
-Example for use [Deployer](http://deployer.org) to deployment PHP project.
+Example for use [Deployer v3](http://deployer.org) to deployment PHP project.
 
 See [http://deployer.org](http://deployer.org) for more information and documentation about Deployer.
 
@@ -15,9 +15,11 @@ You can install [ssh2 extension](http://php.net/manual/en/book.ssh2.php) to spee
 
 Installation
 ------------
-Clone with `git`
+Clone with `git` and `composer install`
 ```shell
 $ git clone git@github.com:oanhnn/deployer-example.git <target-directory>
+$ cd <target-directory>
+$ composer install
 ```
 or using [`composer`](http://getcomposer.org)
 ```shell
@@ -26,16 +28,22 @@ $ composer create-project oanhnn/deployer-example <target-directory>
 
 Usage
 -------------
-Custom `stage/dev.php` for your system.    
-First deployment:
+Customize `stage/dev.php` or make a copy and write your own stages.
+
+First deployment:  
 ```shell
-$ bin/dep configure dev -vvv
-$ bin/dep deploy dev -vvv
+$ bin/dep configure <stage>
+$ bin/dep deploy <stage>
 ```
 
-Second deployment and after:
+Next deployments:
 ```shell
-$ bin/dep deploy dev -vvv
+$ bin/dep deploy <stage>
+```
+
+Using options `-vvv` for debug
+```shell
+$ bin/dep deploy <stage> -vvv
 ```
 
 Contributing
