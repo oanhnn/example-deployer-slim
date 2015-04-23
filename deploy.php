@@ -1,7 +1,6 @@
 <?php
 // require common recipe
 require 'recipe/common.php';
-require __DIR__ . '/stage/dev.php';
 
 /**
  * Set parameters
@@ -58,11 +57,6 @@ task('configure', function () {
         return $contents;
     };
 
-    // Create shared dir if does not exist
-    foreach (get('shared_dirs') as $dir) {
-        run("mkdir -p {deploy_path}/shared/$dir");
-    }
-
     $finder   = new \Symfony\Component\Finder\Finder();
     $iterator = $finder
         ->files()
@@ -82,6 +76,7 @@ task('configure', function () {
                 $target   = preg_replace('/\.tpl$/', '', $file->getRelativePathname());
                 // Put contents and upload tmp file to server
                 if (file_put_contents($tmpFile, $contents) > 0) {
+                    run('mkdir -p {deploy_path}/shared/' . dirname($target));
                     upload($tmpFile, 'shared/' . $target);
                     $success = true;
                 }
@@ -116,3 +111,10 @@ task('deploy', [
 ])->desc('Deploy your project');
 
 before('configure', 'deploy:start');
+
+/**
+ * Require
+ */
+foreach (glob(__DIR__ . '/stage/*.php') as $filename) {
+    include $filename;
+}
