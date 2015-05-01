@@ -28,6 +28,8 @@ $ composer create-project oanhnn/deployer-example <target-directory>
 
 Usage
 -------------
+> In this example using forward agent feature, to run it, please [enable `ssh` forward agent](https://github.com/oanhnn/deployer-example/blob/master/docs/enable-feature-ssh-forward-agent.md) the first.
+
 Customize `stage/dev.php` or make a copy and write your own stages.
 
 First deployment:  
