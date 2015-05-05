@@ -29,8 +29,8 @@ set('writable_use_sudo', false); // Using sudo in writable commands?
  */
 task('deploy:start', function() {
     cd('~');
-    run("if [ ! -d {deploy_path} ]; then mkdir -p {deploy_path}; fi");
-    cd('{deploy_path}');
+    run("if [ ! -d {{deploy_path}} ]; then mkdir -p {{deploy_path}}; fi");
+    cd('{{deploy_path}}');
 })->setPrivate();
 
 /**
@@ -76,7 +76,7 @@ task('configure', function () {
                 $target   = preg_replace('/\.tpl$/', '', $file->getRelativePathname());
                 // Put contents and upload tmp file to server
                 if (file_put_contents($tmpFile, $contents) > 0) {
-                    run('mkdir -p {deploy_path}/shared/' . dirname($target));
+                    run('mkdir -p {{deploy_path}}/shared/' . dirname($target));
                     upload($tmpFile, 'shared/' . $target);
                     $success = true;
                 }
