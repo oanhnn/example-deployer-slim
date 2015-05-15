@@ -113,8 +113,9 @@ task('deploy', [
 before('configure', 'deploy:start');
 
 /**
- * Require
+ * Load stage and list server
  */
-foreach (glob(__DIR__ . '/stage/*.php') as $filename) {
-    include $filename;
-}
+//foreach (glob(__DIR__ . '/stage/*.php') as $filename) {
+//    include $filename;
+//}
+serverList(__DIR__ . '/stage/servers.yml');
