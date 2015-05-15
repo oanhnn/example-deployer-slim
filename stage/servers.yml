@@ -1,0 +1,30 @@
+# list servers
+# -------------
+dev-svr:
+    host: 192.168.11.3
+    port: 22
+    user: dev
+    identity_file: ~
+    forward_agent: ~
+    stage: dev
+    deploy_path: /var/www/apps/slim
+    branch: master
+    app:
+        mode: development
+        debug: true
+        cookies:
+            encrypt: false
+            lifetime: "2 hours"
+            path: /
+            domain: null
+            secure: false
+            httponly: false
+            secret_key: 83cugZvQ67Cm39P2RN7x81G67i37RXlq
+            
+        mysql:
+            host: 127.0.0.1
+            port: 3306
+            username: root
+            password: ""
+            dbname: "test"
+            options: []
