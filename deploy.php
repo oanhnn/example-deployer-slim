@@ -2,6 +2,8 @@
 // require common recipe
 require 'recipe/common.php';
 
+set('ssh_type', 'ext-ssh2');
+
 /**
  * Set parameters
  */
@@ -64,6 +66,7 @@ task('configure', function () {
         ->in(__DIR__ . '/shared');
 
     $tmpDir = sys_get_temp_dir();
+    $deployPath = env('deploy_path');
 
     /* @var $file \Symfony\Component\Finder\SplFileInfo */
     foreach ($iterator as $file) {
@@ -76,8 +79,8 @@ task('configure', function () {
                 $target   = preg_replace('/\.tpl$/', '', $file->getRelativePathname());
                 // Put contents and upload tmp file to server
                 if (file_put_contents($tmpFile, $contents) > 0) {
-                    run('mkdir -p {{deploy_path}}/shared/' . dirname($target));
-                    upload($tmpFile, 'shared/' . $target);
+                    run("mkdir -p {$deployPath}/shared/" . dirname($target));
+                    upload($tmpFile, "{$deployPath}/shared/" . $target);
                     $success = true;
                 }
             } catch (\Exception $e) {
