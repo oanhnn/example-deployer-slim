@@ -11,8 +11,8 @@
     "minimum-stability": "stable",
     "require": {
         "php": ">=5.4.0",
-        "herzult/php-ssh": "~1.0",
-        "deployer/deployer": "~3.0.0"
+        "deployer/deployer": "~3.0.0",
+        "deployphp/recipes": "~3.0"
     },
     "require-dev": {},
     "autoload": {},

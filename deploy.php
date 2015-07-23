@@ -1,8 +1,9 @@
 <?php
 // require common recipe
 require 'recipe/common.php';
+require 'vendor/deployphp/recipes/recipes/configure.php';
 
-set('ssh_type', 'ext-ssh2');
+//set('ssh_type', 'ext-ssh2');
 
 /**
  * Set parameters
@@ -36,68 +37,6 @@ task('deploy:start', function() {
 })->setPrivate();
 
 /**
- * Make shared_dirs and configure files from templates
- */
-task('configure', function () {
-
-    /**
-     * Compiler template of configure files
-     * 
-     * @param string $contents
-     * @return string
-     */
-    $compiler = function ($contents) {
-        if (preg_match_all('/\{\{(.+?)\}\}/', $contents, $matches)) {
-            foreach ($matches[1] as $name) {
-                $value = env()->get($name);
-                if (is_null($value) || is_bool($value) || is_array($value) || is_string($value)) {
-                    $value = var_export($value, true);
-                }
-                $contents = str_replace('{{' . $name . '}}', $value, $contents);
-            }
-        }
-        return $contents;
-    };
-
-    $finder   = new \Symfony\Component\Finder\Finder();
-    $iterator = $finder
-        ->files()
-        ->name('*.tpl')
-        ->in(__DIR__ . '/shared');
-
-    $tmpDir = sys_get_temp_dir();
-    $deployPath = env('deploy_path');
-
-    /* @var $file \Symfony\Component\Finder\SplFileInfo */
-    foreach ($iterator as $file) {
-        $success = false;
-        // Make tmp file
-        $tmpFile = tempnam($tmpDir, 'tmp');
-        if (!empty($tmpFile)) {
-            try {
-                $contents = $compiler($file->getContents());
-                $target   = preg_replace('/\.tpl$/', '', $file->getRelativePathname());
-                // Put contents and upload tmp file to server
-                if (file_put_contents($tmpFile, $contents) > 0) {
-                    run("mkdir -p {$deployPath}/shared/" . dirname($target));
-                    upload($tmpFile, "{$deployPath}/shared/" . $target);
-                    $success = true;
-                }
-            } catch (\Exception $e) {
-                $success = false;
-            }
-            // Delete tmp file
-            unlink($tmpFile);
-        }
-        if ($success) {
-            writeln(sprintf("<info>✔</info> %s", $file->getRelativePathname()));
-        } else {
-            writeln(sprintf("<fg=red>✘</fg=red> %s", $file->getRelativePathname()));
-        }
-    }
-})->desc('Generate and upload configure files to `shared` folder');
-
-/**
  * Main task
  */
 task('deploy', [
@@ -113,7 +52,7 @@ task('deploy', [
     'success',
 ])->desc('Deploy your project');
 
-before('configure', 'deploy:start');
+before('deploy:configure', 'deploy:start');
 
 /**
  * Load stage and list server
