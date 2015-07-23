@@ -32,12 +32,13 @@ $ composer create-project oanhnn/deployer-example <target-directory>
 Usage
 -------------
 > In this example using forward agent feature, to run it, please [enable `ssh` forward agent](https://github.com/oanhnn/deployer-example/blob/master/docs/enable-feature-ssh-forward-agent.md) the first.
+> If using ssh2 extension, please require package `"herzult/php-ssh": "~1.0"` and add line `set('ssh_type', 'ext-ssh2');` to `deploy.php` file before deployment.
 
 Customize `stage/dev.php` or make a copy and write your own stages.
 
 First deployment:  
 ```shell
-$ bin/dep configure <stage>
+$ bin/dep deploy:configure <stage>
 $ bin/dep deploy <stage>
 ```
 
