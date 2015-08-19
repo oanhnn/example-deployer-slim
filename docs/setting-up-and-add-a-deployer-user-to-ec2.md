@@ -1,4 +1,4 @@
-# Adding a deployer user to Amazon EC2 Server
+# Setting up and add a deployer user to Amazon EC2 Server
 
 ## Login by default user
 
@@ -6,10 +6,17 @@
 $ ssh -i generatedKey.pem ec2-user@xx.xx.xxx.xxx
 ```
 
+## Setting up server
+```
+$ sudo apt-get install -y gcc g++ autoconf openssl libssl-dev libicu-dev libyaml-dev curl git-core vim ssh mcrypt imagemagick wget
+$ sudo apt-get install -y mysql-server libmysqlclient-dev nginx php5-fpm php5-cli php5-common php5-mcrypt php5-curl php5-json php5-gd php5-imagick php5-mysqlnd php5-intl php5-redis
+$ sudo apt-get install -y nodejs npm
+```
+
 ## Create a new deployer user
 
 ```
-$ sudo adduser deployer
+$ sudo useradd -g www-data deployer
 $ sudo passwd deployer
 ```
 
