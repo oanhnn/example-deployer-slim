@@ -1,7 +1,7 @@
-Step to step about using [Deployer][] to deploy [Laravel][] application on [Homestead][]
+Using [Deployer][] to deploy [Laravel][] application on [Homestead][]
 ---
 
-1. Install [vagrant][] and [virtuabox][] if not installed.
+1. Install [vagrant][] and [virtualbox][] if not installed.
 
 2. Add box `laravel/homestead` into vagrant if not added.
 
@@ -41,7 +41,7 @@ Step to step about using [Deployer][] to deploy [Laravel][] application on [Home
    provider: virtualbox
    authorize: "./key/id_rsa.pub"       # your public key
    keys:
-       - "./key/id_rsa"                # your private key
+       - "./key/id_rsa"                 # your private key
    folders:
        - map: "./"
          to: "/home/vagrant/deployer-on-homestead"
@@ -62,7 +62,7 @@ Step to step about using [Deployer][] to deploy [Laravel][] application on [Home
 
 **Goodluck!** :smile:
 
-All source code is available in [here][example-source]
+All source code is availabled in [here][example-source]
 
 
 [Homestead]:        https://laravel.com/docs/5.2/homestead
