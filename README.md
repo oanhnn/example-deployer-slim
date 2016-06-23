@@ -3,7 +3,7 @@ Introduction
 
 [![Join the chat at https://gitter.im/oanhnn/deployer-example](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/oanhnn/deployer-example?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Example for use [Deployer v3](http://deployer.org) to deployment PHP project. 
+An example for use [Deployer v3](http://deployer.org) to deployment PHP project.   
 In this example, i'm will deploy a project using [Slim framework](https://github.com/slimphp/Slim) follow my [slim-skeleton](https://github.com/oanhnn/slim-skeleton)
 
 See [http://deployer.org](http://deployer.org) for more information and documentation about Deployer.
@@ -67,4 +67,6 @@ If you would like to help take a look at the [list of issues](https://github.com
 
 License
 -------
-Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php
+This project is released under the MIT License.   
+Copyright © 2015-2016 Oanh Nguyen.   
+Please see [License File](LICENSE.md) for more information.
