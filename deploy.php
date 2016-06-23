@@ -11,19 +11,15 @@ require 'vendor/deployphp/recipes/recipes/configure.php';
 set('repository', 'git@github.com:oanhnn/slim-skeleton.git');
 set('keep_releases', 5);
 set('shared_dirs', [
-    'tmp/cache',
-    'tmp/logs',
-    'vendor',
-    'webroot/upload',
+    'tmp',
+    'public/upload',
 ]);
 set('shared_files', [
-    'config/app.php',
-    'composer.lock',
+    'app/config/app.php',
 ]);
 set('writable_dirs', [
-    'tmp/cache',
-    'tmp/logs',
-    'webroot/upload',
+    'tmp',
+    'public/upload',
 ]);
 set('writable_use_sudo', false); // Using sudo in writable commands?
 
@@ -40,19 +36,19 @@ task('deploy:start', function() {
  * Main task
  */
 task('deploy', [
-    'deploy:start',
     'deploy:prepare',
     'deploy:release',
     'deploy:update_code',
     'deploy:shared',
-    'deploy:writable',
     'deploy:vendors',
     'deploy:symlink',
     'cleanup',
-    'success',
 ])->desc('Deploy your project');
 
 before('deploy:configure', 'deploy:start');
+before('deploy:prepare', 'deploy:start');
+after('deploy:shared', 'deploy:writable');
+after('deploy', 'success');
 
 /**
  * Load stage and list server

@@ -3,7 +3,8 @@ Introduction
 
 [![Join the chat at https://gitter.im/oanhnn/deployer-example](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/oanhnn/deployer-example?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Example for use [Deployer v3](http://deployer.org) to deployment PHP project.
+Example for use [Deployer v3](http://deployer.org) to deployment PHP project. 
+In this example, i'm will deploy a project using [Slim framework](https://github.com/slimphp/Slim) follow my [slim-skeleton](https://github.com/oanhnn/slim-skeleton)
 
 See [http://deployer.org](http://deployer.org) for more information and documentation about Deployer.
 
