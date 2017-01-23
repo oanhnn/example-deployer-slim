@@ -11,9 +11,10 @@ dev-svr:
     forward_agent: ~
     stage: dev
     deploy_path: /var/www/apps/slim
-    branch: master
+    branch: 3.x
     app:
         debug: true
+        domain: slim-app.dev
         mysql:
             host: 127.0.0.1
             port: 3306

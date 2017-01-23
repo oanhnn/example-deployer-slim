@@ -1,22 +1,26 @@
 {
-    "name": "oanhnn/deployer-example",
-    "description": "Example project for deployment PHP project (slim framwork) by Deployer",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "oanhnn",
-            "email": "oanhnn@rikkeisoft.com"
-        }
-    ],
-    "minimum-stability": "stable",
-    "require": {
-        "php": ">=5.4.0",
-        "deployer/deployer": "~3.0.0",
-        "deployphp/recipes": "~3.0"
-    },
-    "require-dev": {},
-    "autoload": {},
-    "config": {
-    	"bin-dir": "bin"
+  "name": "oanhnn/deployer-example",
+  "type": "application",
+  "description": "Example project for deployment PHP project (Slim Framwork) by Deployer",
+  "keyworks": ["Deployer", "deployment", "deploy", "Slim"],
+  "license": "MIT",
+  "homepage": "https://github.com/oanhnn/deployer-example",
+  "support": {
+    "issues": "https://github.com/oanhnn/deployer-example/issues",
+    "source": "https://github.com/oanhnn/deployer-example"
+  },
+  "authors": [
+    {
+      "name": "Oanh Nguyen",
+      "email": "oanhnn.bk@gmail.com",
+      "homepage": "https://oanhnn.github.io/"
     }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=5.6.0"
+  },
+  "require-dev": {
+    "deployer/deployer": "~4.1"
+  }
 }
