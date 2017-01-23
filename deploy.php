@@ -24,7 +24,6 @@ task('deploy:start', function() {
     cd('{{deploy_path}}');
 })->setPrivate();
 
-
 /**
  * Deploy configure
  */
